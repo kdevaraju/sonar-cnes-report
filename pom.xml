@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.cnes.sonar</groupId>
     <artifactId>cnesreport</artifactId>
-    <version>4.2.0</version>
+    <version>4.2.1</version>
     <packaging>sonar-plugin</packaging>
 
     <name>SonarQube CNES Report</name>
@@ -34,10 +33,10 @@
         <maven.compiler.target>11</maven.compiler.target>
         <junit.version>5.9.2</junit.version>
         <jacoco.version>0.8.8</jacoco.version>
-        <sonar.apiVersion>9.8.0.203</sonar.apiVersion>
-        <sonar.testingHarnessVersion>9.5.0.56709</sonar.testingHarnessVersion>
-        <sonar.Version>9.9.0.65466</sonar.Version>
-        <sonar-packaging-maven-plugin.version>1.21.0.505</sonar-packaging-maven-plugin.version>
+        <sonar.apiVersion>10.0.0.695</sonar.apiVersion>
+        <sonar.testingHarnessVersion>10.0.0.68432</sonar.testingHarnessVersion>
+        <sonar.Version>10.0.0.68432</sonar.Version>
+        <sonar-packaging-maven-plugin.version>1.23.0.740</sonar-packaging-maven-plugin.version>
         <sonar.pluginKey>cnesreport</sonar.pluginKey>
         <sonar.pluginUrl>https://github.com/cnescatlab/sonar-cnes-report</sonar.pluginUrl>
         <sonar.pluginOrganizationName>CNES</sonar.pluginOrganizationName>
@@ -201,10 +200,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-	      <groupId>org.junit.vintage</groupId>
-	      <artifactId>junit-vintage-engine</artifactId>
-	      <version>${junit.version}</version>
-	    </dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.github.stefanbirkner</groupId>
             <artifactId>system-rules</artifactId>
@@ -287,18 +286,18 @@
             </plugin>
 
             <plugin>
-	        	<!-- UTF-8 bundles are not supported by Java, so they must be converted during build -->
-	        	<groupId>org.codehaus.mojo</groupId>
-	        	<artifactId>native2ascii-maven-plugin</artifactId>
-	        	<version>2.0.1</version>
-	        	<executions>
-	          		<execution>
-	            		<goals>
-	              			<goal>resources</goal>
-	            		</goals>
-	          		</execution>
-	        	</executions>
-	      	</plugin>
+                <!-- UTF-8 bundles are not supported by Java, so they must be converted during build -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>native2ascii-maven-plugin</artifactId>
+                <version>2.0.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -354,33 +353,33 @@
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>1.9.1</version>
                 <executions>
-                <execution>
-                    <phase>generate-resources</phase>
-                    <id>install node and yarn</id>
-                    <goals>
-                    <goal>install-node-and-yarn</goal>
-                    </goals>
-                    <configuration>
-                        <nodeVersion>v16.14.0</nodeVersion>
-                        <yarnVersion>v1.22.5</yarnVersion>
-                    </configuration>
-                </execution>
-                <execution>
-                    <id>yarn install</id>
-                    <goals>
-                    <goal>yarn</goal>
-                    </goals>
-                </execution>
-                <execution>
-                    <phase>generate-resources</phase>
-                    <id>yarn run script</id>
-                    <goals>
-                    <goal>yarn</goal>
-                    </goals>
-                    <configuration>
-                    <arguments>run build</arguments>
-                    </configuration>
-                </execution>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <id>install node and yarn</id>
+                        <goals>
+                            <goal>install-node-and-yarn</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>v16.14.0</nodeVersion>
+                            <yarnVersion>v1.22.5</yarnVersion>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>yarn install</id>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <id>yarn run script</id>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run build</arguments>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
